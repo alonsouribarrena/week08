@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline with JWT</title>
+  <style>
+    input {
+      display: block;
+    }
+    .container > div{
+      width: 40%;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="display: flex;">
+    <div>
+      <h2>login</h2>
+      <form action="/login-user" method="POST">
+        <input type="email" name="email" placeholder="email">
+        <input type="password" name="password" placeholder="password">
+        <button>login!</button>
+      </form>
+    </div>
+    <div>
+      <h2>sign-up</h2>
+      <form action="/signup-user" method="POST">
+        <input type="text" name="firstName" placeholder="first Name">
+        <input type="text" name="lastName" placeholder="last Name">
+        <input type="email" name="email" placeholder="email">
+        <input type="password" name="password" placeholder="password">
+        <button>sign-up</button>
+      </form> 
+    </div>
+  </div>
+  <% if (err) { %>
+    <h5><%= err %></h5>
+   <% } %>
+</body>
+</html>

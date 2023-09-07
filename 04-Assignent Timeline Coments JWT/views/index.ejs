@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="navBar">
+    <h1>Hi <%= userFullName %></h1>
+  </div>
+  <div>Timeline with comments</div>
+  <a href="/logOut-user">Log-Out</a>
+  <hr>
+  <div class="postFomr">
+    <h3>Post a Message</h3>
+    <form action="/create-post/<%= userId %>" method="POST">
+      <input type="text" placeholder="post" name="post" size="80%" >
+      <button>Post a message</button>
+    </form>
+    <hr>
+    <% if(err) { %>
+      <p><%= err %></p>
+      <% } %>
+      
+      <% if(posts.length > 0) {%>
+        <% posts.forEach(post =>{ %>
+        <div>
+          <h5><%= post.user_id.firstName %> made this post on: <%= post.date %></h5>
+          <h3><%= post.post %></h3>
+          <div>
+            <form action="/add-comment/<%=post._id%>" method="POST">
+              <input name="comment" placeholder="comments?" >
+              <button>Any comment?</button> 
+            </form>
+            <div>
+              <% if(post.comments.length > 0) {%>
+                <% post.comments.forEach(comment =>{ %>
+                  <div>
+                    <h5><%= post.user_id.firstName %> made this comment on: <%= comment.date %></h5>
+                    <h5><%= comment.comment %></h5>
+                    <div>
+                      <% }) %> 
+                      <% } %>
+                      <hr>
+
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    <%} else { %>
+        <p>No Post here</p>
+     <% } %>
+  </div>
+</body>
+</html>
